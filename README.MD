@@ -1,26 +1,18 @@
-# Compose Multiplatform Application
+# Playing with KMM
 
-## Before running!
- - check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
- - install JDK 17 on your machine
- - add `local.properties` file to the project root and set a path to Android SDK there
+Simple KMM app implementing Google's Gemini pro targeting Android, iOS, Desktop and Browser.
 
-### Android
-To run the application on android device/emulator:  
- - open project in Android Studio and run imported android run configuration
+### Figma Link 
 
-To build the application bundle:
- - run `./gradlew :composeApp:assembleDebug`
- - find `.apk` file in `composeApp/build/outputs/apk/debug/composeApp-debug.apk`
+https://figma.com/file/qo8Vt7bxiZrX8U1pJygczR/Aspen-Travel-App-Exploration--Mobile-App-Design-(Community)?type=design&node-id=0-11&mode=design&t=bcgRds9P640ec4YP-0
 
-### Desktop
-Run the desktop application: `./gradlew :composeApp:run`
+![Aspen Travel App Exploration- Mobile App Design](https://github.com/Usama-Aman/Travely/assets/30404628/fefcfcb3-d6d6-4cb5-93b9-4e47b9870d7b)
 
-### iOS
-To run the application on iPhone device/simulator:
- - Open `iosApp/iosApp.xcproject` in Xcode and run standard configuration
- - Or use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) for Android Studio
 
-### Browser
-Run the browser application: `./gradlew :composeApp:jsBrowserDevelopmentRun`
+### Here are the Screenshots:
 
+<img src = "screenshots/Simulator Screenshot - iPhone 15 Pro - 2023-12-28 at 19.37.12.png" width ="200" /> <img src = "screenshots/Screenshot_20231228_193721.png" width ="200" />
+
+<img src = "screenshots/Screenshot 2023-12-28 at 19.38.03.png" width ="200" /> 
+
+<img src = "screenshots/Screenshot 2023-12-28 at 19.37.41.png" width ="200" /> 

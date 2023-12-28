@@ -54,6 +54,13 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)
+
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.io.ktor.ktor.client.serialization)
+            implementation(libs.ktor.client.content.negotiation)
+
+            implementation(libs.moko.mvvm)
         }
 
         commonTest.dependencies {
@@ -65,6 +72,7 @@ kotlin {
             implementation(libs.androidx.activityCompose)
             implementation(libs.compose.uitooling)
             implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.ktor.client.okhttp)
         }
 
         jvmMain.dependencies {
@@ -77,6 +85,7 @@ kotlin {
         }
 
         iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
 
     }

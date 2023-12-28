@@ -26,12 +26,6 @@ object KtorClient {
             ?: HttpClient() {
 
                 install(DefaultRequest) {
-//                    url(Constants.BASE_URL)
-
-                    url {
-                      parameters.append("key", "AIzaSyDswVBi-2t0fqRFovUpPNnfxabOwXNaWyc")
-                    }
-
                     accept(ContentType.Application.Json)
                     contentType(ContentType.Application.Json)
                 }

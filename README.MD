@@ -1,6 +1,6 @@
 # Playing with KMM
 
-Simple KMM app implementing Google's Gemini Pro targeting Android, iOS, Desktop, and Browser.
+Simple KMM app implementing Google's Gemini Pro.
 
 
 ### Supported Platforms: 

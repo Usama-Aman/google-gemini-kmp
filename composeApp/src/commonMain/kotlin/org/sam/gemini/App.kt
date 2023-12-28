@@ -38,7 +38,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -51,9 +53,11 @@ import org.sam.gemini.presentation.HomeViewModel
 import org.sam.gemini.theme.AppTheme
 import org.sam.gemini.theme.LocalThemeIsDark
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 internal fun App() = AppTheme {
 
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     val textInputUseCase: TextInputUseCase = remember { TextInputUseCase(RepositoryImpl()) }
     val viewModel = remember { HomeViewModel(textInputUseCase) }
@@ -112,7 +116,9 @@ internal fun App() = AppTheme {
                 label = { Text(text = "Ask Gemini") },
                 onValueChange = viewModel::onContentChanged,
                 keyboardActions = KeyboardActions(
-                    onDone = { generate = false }
+                    onDone = {
+                        generate = false
+                    }
                 ),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,
@@ -120,7 +126,10 @@ internal fun App() = AppTheme {
                 )
             )
 
-            Button(onClick = { generate = true }) {
+            Button(onClick = {
+                keyboardController?.hide()
+                generate = true
+            }) {
                 Text("Generate")
             }
         }

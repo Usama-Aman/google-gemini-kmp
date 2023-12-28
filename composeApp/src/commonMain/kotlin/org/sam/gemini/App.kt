@@ -62,8 +62,8 @@ internal fun App() = AppTheme {
     var generate by remember { mutableStateOf(false) }
 
     LaunchedEffect(generate) {
-        println(generate)
-        viewModel.generateContent()
+        if (generate)
+            viewModel.generateContent()
         generate = false
     }
 
@@ -76,7 +76,7 @@ internal fun App() = AppTheme {
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Gemini KMP",
+                text = "Gemini",
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(16.dp)
             )
@@ -97,7 +97,33 @@ internal fun App() = AppTheme {
 
         }
 
-        Spacer(modifier = Modifier.size(10.dp))
+
+        Row(
+            modifier = Modifier
+                .padding(20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+
+            OutlinedTextField(
+                modifier = Modifier
+                    .weight(1f),
+                value = viewModel.content,
+                label = { Text(text = "Ask Gemini") },
+                onValueChange = viewModel::onContentChanged,
+                keyboardActions = KeyboardActions(
+                    onDone = { generate = false }
+                ),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Done
+                )
+            )
+
+            Button(onClick = { generate = true }) {
+                Text("Generate")
+            }
+        }
 
         if (state.isLoading)
             Box(
@@ -115,38 +141,12 @@ internal fun App() = AppTheme {
             ) {
                 Text(
                     text = state.resultContent,
-                    style = MaterialTheme.typography.headlineMedium,
+                    style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(16.dp)
                         .fillMaxSize()
                 )
             }
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-
-            OutlinedTextField(
-                modifier = Modifier,
-                value = viewModel.content,
-                label = { Text(text = "Ask Gemini") },
-                onValueChange = viewModel::onContentChanged,
-                keyboardActions = KeyboardActions(
-                    onDone = { generate = false }
-                ),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Done
-                )
-            )
-
-            Button(onClick = { generate = true }) {
-                Text("Generate")
-            }
-        }
 
     }
 }
